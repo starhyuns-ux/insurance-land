@@ -100,7 +100,7 @@
     margin-bottom:6px;
   }
   
-  /* card */
+  /* card (기본 카드 스타일) */
   .card{
     background:var(--card);
     border:1px solid var(--line);
@@ -214,14 +214,16 @@
   .case{
     display:flex;
     justify-content:space-between;
+    margin:12px 0;
     font-weight:800;
   }
   
   .tag{
-    font-size:12px;
+    background:#eef2ff;
+    color:var(--primary);
     padding:2px 6px;
     border-radius:999px;
-    background:#f1f5f9;
+    font-size:12px;
     margin-right:6px;
   }
   
@@ -259,9 +261,9 @@
     border-top:1px solid var(--line);
     padding:24px 0;
   }
-
+  
   /* trustline (히어로 아래 3박스) */
-.trustline{
+  .trustline{
     display:flex;
     gap:12px;
     flex-wrap:wrap;
@@ -288,19 +290,113 @@
     color:var(--muted);
     margin-top:2px;
   }
-
-  .case{
-    display:flex;
-    justify-content:space-between;
-    margin:12px 0;
-    font-weight:800;
+  
+  /* ===== 실손 세대 비교 카드 (박스 구조) ===== */
+  
+  .insure-compare{
+    padding:48px 18px;
+    max-width:1200px;
+    margin:0 auto;
+    text-align:center;
   }
   
-  .tag{
-    background:#eef2ff;
-    color:var(--primary);
-    padding:2px 6px;
-    border-radius:999px;
+  /* 가로 나열 + 가운데 정렬 */
+  .insure-compare .cards{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:nowrap;        /* ⭐ 줄바꿈 금지 */
+  }
+  
+  /* 카드 */
+  .insure-compare .card{
+    flex:1;                 /* ⭐ 자동 분배 */
+    min-width:0;
+    max-width:220px;        /* 너무 커지는 것 방지 */
+  }
+    border:1px solid var(--line);
+    border-radius:16px;
+    background:#fff;
+    padding:16px;
+    box-shadow:0 8px 24px rgba(0,0,0,.06);
+    position:relative;
+    text-align:left;
+    transition:.25s ease;
+  }
+  
+  .insure-compare .card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 16px 40px rgba(0,0,0,.12);
+  }
+  
+  /* 헤더 */
+  .insure-compare .card-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    border-bottom:1px dashed var(--line);
+    padding-bottom:10px;
+    margin-bottom:12px;
+  }
+  
+  .insure-compare .card h3{
+    margin:0;
+    font-size:18px;
+  }
+  
+  .insure-compare .period{
     font-size:12px;
-    margin-right:6px;
+    color:var(--muted);
+  }
+  
+  /* 리스트 */
+  .insure-compare .spec{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:grid;
+    gap:10px;
+  }
+  
+  .insure-compare .spec li{
+    display:grid;
+    grid-template-columns:90px 1fr;
+    gap:10px;
+  }
+  
+  .insure-compare .spec span{
+    font-size:12px;
+    color:var(--muted);
+  }
+  
+  .insure-compare .spec b{
+    font-size:13px;
+    font-weight:600;
+    line-height:1.4;
+  }
+  
+  /* 4세대 강조 */
+  .insure-compare .card-focus{
+    border:2px solid var(--primary);
+    box-shadow:0 16px 42px rgba(37,99,235,.18);
+  }
+  
+  /* 배지 */
+  .insure-compare .badge{
+    position:absolute;
+    top:12px;
+    right:12px;
+    font-size:11px;
+    padding:6px 10px;
+    border-radius:999px;
+    background:#111;
+    color:#fff;
+  }
+  
+  /* 모바일 */
+  @media(max-width:768px){
+    .insure-compare .card{
+      width:90%;
+      max-width:420px;
+    }
   }
